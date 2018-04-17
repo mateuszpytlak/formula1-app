@@ -1,8 +1,11 @@
-//@import "modules/_all.scss";
-//@import "modules/_colors.scss";
-//@import "partials/_base.scss";
-//@import "partials/_header.scss";
-//@import "partials/_footer.scss";
+@import "./components/_standings.scss";
+@import "./components/_header.scss";
+@import "./components/_navigation.scss";
+@import "./components/_logo.scss";
+@import "./components/_buttons.scss";
+@import "./partials/_fonts.scss";
+@import "./partials/variables";
+
 
 
 * {
@@ -11,6 +14,15 @@
     box-sizing: border-box;
 }
 
-div {
-    color: blue;
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    //letter-spacing: 1px;
+    //font-weight: 600;
+    background: #f4f2f0;
+}
+
+.page_wrap {
+    margin: 0 auto;
+    width: 90%;
+    //border: 1px solid red;
 }

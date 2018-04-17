@@ -1,0 +1,28 @@
+@import "../partials/variables";
+
+.header_nav {
+    height: 80px;
+}
+
+.header_nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    //border: 1px solid blue;
+    height: 80px;
+    width: 500px;
+}
+
+.header_nav ul li {
+    height: 50px;
+    //border: 1px solid red;
+    display: flex;
+    align-items: center;
+}
+
+.header_nav ul li a {
+    text-decoration: none;
+    display: inline-block;
+    color: #46B5EF;
+}

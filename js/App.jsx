@@ -1,7 +1,15 @@
 import React from 'react';
+import {Standings} from "./Standings.jsx";
+import {Header} from "./Header.jsx";
 
 export class App extends React.Component {
 
-    componentDidMount() {
-        fetch('http://ergast.com/api/f1/2008/driverStandings')
-            .then( resp => resp.j
+    render() {
+        return (
+            <div>
+                <Header/>
+                <Standings/>
+            </div>
+        )
+    }
+}

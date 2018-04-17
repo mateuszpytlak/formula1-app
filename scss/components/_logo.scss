@@ -1,0 +1,12 @@
+@import "../partials/variables";
+@import "../partials/fonts";
+
+.header_logo {
+    height: 50px;
+    //border: 1px solid green;
+    line-height: 50px;
+    color: #46B5EF;
+    font-family: "moonhouse", sans-serif;
+    font-size: 35px;
+    letter-spacing: 2px;
+}

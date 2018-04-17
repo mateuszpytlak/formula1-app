@@ -1,0 +1,11 @@
+@import "../partials/_variables.scss";
+
+.header {
+    background: #3E3E3B;
+}
+
+.header .page_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

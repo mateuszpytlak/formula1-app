@@ -1,0 +1,122 @@
+@import "../partials/variables";
+
+
+html {
+    color: cornflowerblue;
+}
+
+
+table,
+td {
+    //border: 1px solid #333;
+    margin: 12px auto;
+    width: 900px;
+    border-collapse: collapse;
+    //font-family: 'Lato', sans-serif;
+}
+
+thead,
+tfoot {
+    background-color: #f4f2f0;
+    color: $color2;
+}
+
+fieldset {
+    margin: 50px auto;
+    width: 950px;
+    background: #fff;
+}
+
+legend {
+    margin-left: 20px;
+    font-size: 1.2em;
+    font-family: 'Lato', sans-serif;
+}
+
+input {
+    display: block;
+    margin: 30px auto;
+}
+
+//---------------
+
+th,
+td {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    color: black;
+}
+
+tr.data:hover {
+    background-color: $color2;
+    color: $color3;
+}
+
+td.position {
+    width: 10%;
+    text-align: center;
+}
+
+td.driver {
+    width: 35%;
+    text-align: left;
+}
+
+td.team {
+    width: 35%;
+}
+
+td.points {
+    width: 10%;
+    text-align: center;
+}
+
+td.wins {
+    width: 10%;
+    text-align: center;
+}
+
+th.season {
+    width: 50%;
+}
+
+th.grandprix {
+    width: 50%;
+}
+
+th.name {
+    text-align: left;
+}
+
+th.team {
+    text-align: left;
+}
+
+
+//------------
+
+.styled-select {
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    height: 29px;
+    overflow: hidden;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.styled-select select {
+    background: rgba(70, 181, 239, 0.69);
+    border: none;
+    font-size: 14px;
+    height: 29px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+    width: 170px;
+}
+
+.blue {
+    background-color: rgba(70, 181, 239, 0.3);
+    margin: 40px auto;
+}
+
+.blue select {
+    color: #fff;
+}
