@@ -1,10 +1,14 @@
 import React from 'react';
-import {TableBody} from "./TableBody.jsx";
-import {TableHead} from "./TableHead.jsx";
+import {
+    HashRouter,
+    Route,
+    Link,
+    Switch,
+    NavLink,
+} from 'react-router-dom';
 import {Buttons} from "./Buttons.jsx";
-
-
-// const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/driverStandings.json`;
+import {DriverStandings} from "./DriverStandings.jsx";
+import {ConstructorStandings} from "./ConstructorStandings.jsx";
 
 const selectOptions = [];
 
@@ -19,24 +23,12 @@ export class Standings extends React.Component {
         this.state = {
             data: null,
             year: 2017,
+            standings: 'constructorStandings',
         }
     }
 
     componentDidMount() {
-        // const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/driverStandings.json`;
-
-        fetch('http://ergast.com/api/f1/2018/driverStandings.json')
-        // fetch(fetchUrl)
-            .then(resp => resp.json())
-            .then(data => this.setState({data: data.MRData.StandingsTable}))
-            .catch(err => console.log(err))
-    }
-
-    componentWillUpdate() {
-        const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/driverStandings.json`;
-
-        // fetch('http://ergast.com/api/f1/2018/driverStandings.json')
-        fetch(fetchUrl)
+        fetch(`http://ergast.com/api/f1/${this.state.year}/${this.state.standings}.json`)
             .then(resp => resp.json())
             .then(data => this.setState({data: data.MRData.StandingsTable}))
             .catch(err => console.log(err))
@@ -44,34 +36,80 @@ export class Standings extends React.Component {
 
     handleInputYear = (event) => {
         this.setState({
-            year: event.target.value
+            data: null,
         });
-        console.log(this.state.year);
+        const yearValue = event.target.value;
+        const fetchUrl = `http://ergast.com/api/f1/${yearValue}/${this.state.standings}.json`;
+
+        fetch(fetchUrl)
+            .then(resp => resp.json())
+            .then(data => this.setState({data: data.MRData.StandingsTable, year: yearValue}))
+            .catch(err => console.log(err));
     };
 
+    handleStandings = (event) => {
+        this.setState({
+            data: null,
+        });
+
+        const standingsValue = event.target.dataset.value;
+        const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/${standingsValue}.json`;
+
+        fetch(fetchUrl)
+            .then(resp => resp.json())
+            .then(data => this.setState({data: data.MRData.StandingsTable, standings: standingsValue}))
+            .catch(err => console.log(err));
+    };
 
     render() {
-
+        // console.log(this.state.data);
         const optionList = selectOptions.map(el => <option key={el}>{el}</option>);
 
         if (this.state.data !== null) {
-            return (
-                <div className="page_wrap">
-                    <div className="styled-select blue">
-                        <select value={this.state.year} onChange={this.handleInputYear}>
-                            {optionList}
-                        </select>
+            if (this.state.standings === 'driverStandings') {
+                return (
+                    <div className="page_wrap">
+                        <div className="styled-select blue">
+                            <select value={this.state.year} onChange={this.handleInputYear}>
+                                {optionList}
+                            </select>
+                        </div>
+                        {/*<HashRouter>*/}
+                        {/*<div>*/}
+                        <Buttons action={this.handleStandings} standings={this.state.standings}/>
+                        {/*<Switch>*/}
+                        {/*<Route path="/driverStandings" component={DriverStandings} data={this.state.data}/>*/}
+                        {/*<Route path="/constructorStandings" component={ConstructorStandings}*/}
+                        {/*data={this.state.data}/>*/}
+                        <DriverStandings data={this.state.data}/>
+                        {/*</Switch>*/}
+                        {/*</div>*/}
+                        {/*</HashRouter>*/}
                     </div>
-                    <Buttons />
-                    <fieldset>
-                        <legend>Driver standings</legend>
-                        <table>
-                            <TableHead data={this.state.data}/>
-                            <TableBody data={this.state.data}/>
-                        </table>
-                    </fieldset>
-                </div>
-            )
+                )
+            } else if(this.state.standings === 'constructorStandings') {
+                return (
+                    <div className="page_wrap">
+                        <div className="styled-select blue">
+                            <select value={this.state.year} onChange={this.handleInputYear}>
+                                {optionList}
+                            </select>
+                        </div>
+                        {/*<HashRouter>*/}
+                        {/*<div>*/}
+                        <Buttons action={this.handleStandings} standings={this.state.standings}/>
+                        {/*<Switch>*/}
+                        {/*<Route path="/driverStandings" component={DriverStandings} data={this.state.data}/>*/}
+                        {/*<Route path="/constructorStandings" component={ConstructorStandings}*/}
+                        {/*data={this.state.data}/>*/}
+                        <ConstructorStandings data={this.state.data}/>
+                        {/*</Switch>*/}
+                        {/*</div>*/}
+                        {/*</HashRouter>*/}
+                    </div>
+                )
+            }
+
         } else {
             return (
                 <div className="styled-select blue">

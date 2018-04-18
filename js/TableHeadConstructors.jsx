@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class TableHead extends React.Component {
+export class TableHeadConstructors extends React.Component {
 
     render() {
         if (this.props.data !== null) {
@@ -12,8 +12,8 @@ export class TableHead extends React.Component {
                 </tr>
                 <tr>
                     <th className="position">Position</th>
-                    <th className="name">Driver</th>
-                    <th className="team">Team</th>
+                    <th className="constructor">Constructor</th>
+                    <th className="nationality">Nationality</th>
                     <th className="points">Points</th>
                     <th className="wins">Wins</th>
                 </tr>
