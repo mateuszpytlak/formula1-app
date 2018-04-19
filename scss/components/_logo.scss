@@ -1,12 +1,60 @@
 @import "../partials/variables";
 @import "../partials/fonts";
 
-.header_logo {
-    height: 50px;
+div.header_logo {
+    height: 150px;
     //border: 1px solid green;
-    line-height: 50px;
+    line-height: 100px;
     color: #46B5EF;
     font-family: "moonhouse", sans-serif;
-    font-size: 35px;
+    font-size: 50px;
     letter-spacing: 2px;
+    //---------------------
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+    //text-align:center;
+    //border: 1px solid red;
+    width: 900px;
+}
+
+div#header_logo_main {
+    animation: showup 7s infinite;
+    display:inline-block;
+    text-align:center;
+}
+
+div#header_logo_secondary {
+    width:0;
+    animation: reveal 7s infinite;
+    display:inline-block;
+    margin-left: 30px;
+}
+
+div#header_logo_secondary span {
+    margin-left:-355px;
+    animation: slidein 7s infinite;
+    //display:inline-block;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:355px;}
 }

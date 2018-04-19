@@ -10,7 +10,7 @@ export class DriverStandings extends React.Component {
                 <legend>Driver standings</legend>
                 <table>
                     <TableHeadDrivers data={this.props.data}/>
-                    <TableBodyDrivers data={this.props.data}/>
+                    <TableBodyDrivers actionShowDetails={this.props.actionShowDetails} data={this.props.data}/>
                 </table>
             </fieldset>
         )

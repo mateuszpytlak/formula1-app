@@ -9,6 +9,7 @@ import {
 import {Buttons} from "./Buttons.jsx";
 import {DriverStandings} from "./DriverStandings.jsx";
 import {ConstructorStandings} from "./ConstructorStandings.jsx";
+import {DriverDetails} from "./DriverDetails.jsx";
 
 const selectOptions = [];
 
@@ -23,7 +24,8 @@ export class Standings extends React.Component {
         this.state = {
             data: null,
             year: 2017,
-            standings: 'constructorStandings',
+            standings: 'driverStandings',
+            driverDetails: null,
         }
     }
 
@@ -33,6 +35,13 @@ export class Standings extends React.Component {
             .then(data => this.setState({data: data.MRData.StandingsTable}))
             .catch(err => console.log(err))
     }
+
+    // myFetch(url, data1, data2) {
+    //     fetch(`http://ergast.com/api/f1/${this.state.year}/${this.state.standings}.json`)
+    //         .then(resp => resp.json())
+    //         .then(data => this.setState({data: data.MRData.StandingsTable}))
+    //         .catch(err => console.log(err))
+    // }
 
     handleInputYear = (event) => {
         this.setState({
@@ -51,7 +60,6 @@ export class Standings extends React.Component {
         this.setState({
             data: null,
         });
-
         const standingsValue = event.target.dataset.value;
         const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/${standingsValue}.json`;
 
@@ -61,8 +69,18 @@ export class Standings extends React.Component {
             .catch(err => console.log(err));
     };
 
+    handleShowDetails = (event) => {
+        const driverDetails = event.target.parentNode.dataset.name;
+        const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/drivers/${driverDetails}/results.json`;
+
+        fetch(fetchUrl)
+            .then(resp => resp.json())
+            .then(data => this.setState({driverDetails: data.MRData.RaceTable}))
+            .catch(err => console.log(err));
+    };
+
+
     render() {
-        // console.log(this.state.data);
         const optionList = selectOptions.map(el => <option key={el}>{el}</option>);
 
         if (this.state.data !== null) {
@@ -81,13 +99,14 @@ export class Standings extends React.Component {
                         {/*<Route path="/driverStandings" component={DriverStandings} data={this.state.data}/>*/}
                         {/*<Route path="/constructorStandings" component={ConstructorStandings}*/}
                         {/*data={this.state.data}/>*/}
-                        <DriverStandings data={this.state.data}/>
+                        <DriverStandings actionShowDetails={this.handleShowDetails} data={this.state.data}/>
                         {/*</Switch>*/}
                         {/*</div>*/}
                         {/*</HashRouter>*/}
+                        {this.state.driverDetails && <DriverDetails driverDetails={this.state.driverDetails}/>}
                     </div>
                 )
-            } else if(this.state.standings === 'constructorStandings') {
+            } else if (this.state.standings === 'constructorStandings') {
                 return (
                     <div className="page_wrap">
                         <div className="styled-select blue">
@@ -106,6 +125,7 @@ export class Standings extends React.Component {
                         {/*</Switch>*/}
                         {/*</div>*/}
                         {/*</HashRouter>*/}
+                        {this.state.driverDetails && <div>{this.state.driverDetails}</div>}
                     </div>
                 )
             }

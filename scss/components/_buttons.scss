@@ -3,14 +3,28 @@ div.buttons {
     justify-content: center;
 }
 
-div.buttons div {
-    display: inline-block;
-    background: #46B5EF;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 3px;
-    margin: 0 20px;
-    width: 120px;
-    text-align: center;
+div.buttons div{
+    background: none;
     cursor: pointer;
+    padding: 20px 50px;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    transition: all 0.3s;
+    border: 3px solid #46B5EF;
+    color: #01FBE0;
+}
+
+div.buttons div:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s;
+}
+
+div.buttons div:hover,
+div.buttons div:active {
+    color: #fff;
+    background: #46B5EF;
 }

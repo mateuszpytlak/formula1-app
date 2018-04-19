@@ -9,7 +9,7 @@ export class Header extends React.Component {
             <div className="header">
                 <div className="page_wrap">
                     <Logo/>
-                    <Navigation/>
+                    {/*<Navigation/>*/}
                 </div>
             </div>
         )

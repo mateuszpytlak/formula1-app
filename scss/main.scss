@@ -3,6 +3,7 @@
 @import "./components/_navigation.scss";
 @import "./components/_logo.scss";
 @import "./components/_buttons.scss";
+@import "./components/_driverDetails.scss";
 @import "./partials/_fonts.scss";
 @import "./partials/variables";
 
@@ -25,4 +26,6 @@ body {
     margin: 0 auto;
     width: 90%;
     //border: 1px solid red;
+    //background: url('../assets/images/back1.jpg')
 }
+
