@@ -7,7 +7,7 @@ export class ConstructorStandings extends React.Component {
     render() {
         return (
             <fieldset>
-                <legend>Driver standings</legend>
+                <legend>Constructor standings</legend>
                 <table>
                     <TableHeadConstructors data={this.props.data}/>
                     <TableBodyConstructors actionShowDetails={this.props.actionShowDetails} data={this.props.data}/>

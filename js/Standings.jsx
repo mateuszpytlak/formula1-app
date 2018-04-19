@@ -1,11 +1,4 @@
 import React from 'react';
-import {
-    HashRouter,
-    Route,
-    Link,
-    Switch,
-    NavLink,
-} from 'react-router-dom';
 import {Buttons} from "./Buttons.jsx";
 import {DriverStandings} from "./DriverStandings.jsx";
 import {ConstructorStandings} from "./ConstructorStandings.jsx";
@@ -36,13 +29,6 @@ export class Standings extends React.Component {
             .then(data => this.setState({data: data.MRData.StandingsTable}))
             .catch(err => console.log(err))
     }
-
-    // myFetch(url, data1, data2) {
-    //     fetch(`http://ergast.com/api/f1/${this.state.year}/${this.state.standings}.json`)
-    //         .then(resp => resp.json())
-    //         .then(data => this.setState({data: data.MRData.StandingsTable}))
-    //         .catch(err => console.log(err))
-    // }
 
     handleInputYear = (event) => {
         this.setState({
@@ -84,17 +70,6 @@ export class Standings extends React.Component {
             .catch(err => console.log(err));
     };
 
-    // handleDriverShowDetails = (event) => {
-    //     const driverDetails = event.target.parentNode.dataset.name;
-    //     const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/drivers/${driverDetails}/results.json`;
-    //
-    //     fetch(fetchUrl)
-    //         .then(resp => resp.json())
-    //         .then(data => this.setState({driverDetails: data.MRData.RaceTable}))
-    //         .catch(err => console.log(err));
-    // };
-
-
     render() {
         const optionList = selectOptions.map(el => <option key={el}>{el}</option>);
 
@@ -103,7 +78,7 @@ export class Standings extends React.Component {
                 return (
                     <div className="page_wrap">
                         <div className="styled-select blue">
-                            <select value={this.state.year} onChange={this.handleInputYear}>
+                            <select id="select" value={this.state.year} onChange={this.handleInputYear}>
                                 {optionList}
                             </select>
                         </div>

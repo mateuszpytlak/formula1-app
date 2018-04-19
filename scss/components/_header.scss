@@ -5,16 +5,48 @@
     background-color: #444;
     background-image:
             linear-gradient(90deg, rgba(black, 0.9), rgba(black, 0.4), rgba(black, 0.9)),
-            url(../assets/images/back1a.jpg);
+            url('../assets/images/back1a.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
-    align-items: center;
+    //align-items: center;
     flex-direction: column;
 }
 
 .header .page_wrap {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+    //border: 1px solid green;
+    height: 100vh;
+    justify-content: space-around;
+}
+
+div#enter {
+    margin: 0 auto;
+    //border: 2px solid red;
+    font-size: 40px;
+    color: #46B5EF;
+    font-family: 'moonhouse', sans-serif;
+    align-self: flex-end;
+    animation: showup 3s infinite;
+    cursor: pointer;
+}
+
+div#enter a {
+    text-decoration: none;
+    font-size: 40px;
+    color: #46B5EF;
+}
+
+div#enter a:visited {
+    color: #46B5EF;
+}
+
+
+@keyframes showup {
+    0% {opacity:0;}
+    //20% {opacity:1;}
+    //80% {opacity:1;}
+    100% {opacity:1;}
 }

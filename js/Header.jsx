@@ -1,6 +1,6 @@
 import React from 'react';
 import {Logo} from "./Logo.jsx";
-import {Navigation} from "./Navigation.jsx";
+import {EnterButton} from "./EnterButton.jsx";
 
 export class Header extends React.Component {
 
@@ -9,8 +9,7 @@ export class Header extends React.Component {
             <div className="header">
                 <div className="page_wrap">
                     <Logo/>
-                    {/*<Navigation/>*/}
-
+                    <EnterButton />
                 </div>
             </div>
         )

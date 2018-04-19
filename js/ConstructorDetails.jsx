@@ -6,7 +6,7 @@ export class ConstructorDetails extends React.Component {
 
     render() {
         return (
-            <fieldset ref="constructorDet">
+            <fieldset>
                 <legend>Constructor details</legend>
                 <table>
                     <ConstructorDetailsHead constructorDetails={this.props.constructorDetails}/>
