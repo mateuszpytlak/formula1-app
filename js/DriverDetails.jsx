@@ -4,9 +4,10 @@ import {DriverDetailsBody} from "./DriverDetailsBody.jsx";
 
 export class DriverDetails extends React.Component {
 
+
     render() {
         return (
-            <fieldset>
+            <fieldset className="driverDetails" ref={this.props.fieldsetRef}>
                 <legend>Driver details</legend>
                 <table>
                     <DriverDetailsHead driverDetails={this.props.driverDetails}/>

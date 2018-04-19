@@ -2,7 +2,7 @@
 
 
 html {
-    color: cornflowerblue;
+    color: #f4f2f0;
 }
 
 
@@ -17,20 +17,23 @@ td {
 
 thead,
 tfoot {
-    background-color: #f4f2f0;
-    color: $color2;
+    background-color: #46B5EF;
+    color: black;
 }
 
 fieldset {
     margin: 50px auto;
     width: 950px;
-    background: #fff;
+    background: rgba(23, 23, 23, 0.8);
+    color: #46B5EF;
+    border: 3px solid #46B5EF;
 }
 
 legend {
     margin-left: 20px;
     font-size: 1.2em;
     font-family: 'Lato', sans-serif;
+    //color: #FF6C41;
 }
 
 input {
@@ -38,18 +41,27 @@ input {
     margin: 30px auto;
 }
 
-//---------------
+//---------------red: #FF6C41  blue: #46B5EF gray: #f4f2f0  orange: #FFCB41
 
 th,
 td {
     padding: 5px;
-    border-bottom: 1px solid #ddd;
-    color: black;
+    border-bottom: 1px solid #3a80b0;
+    //color: black;
 }
 
+tr {
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+//td {
+//    background: white;
+//}
+
 tr.data:hover {
-    background-color: $color2;
-    color: $color3;
+    background-color: #46B5EF;
+    color: #fff;
 }
 
 td.position {

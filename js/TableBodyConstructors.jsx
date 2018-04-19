@@ -6,7 +6,7 @@ export class TableBodyConstructors extends React.Component {
     render() {
         if (this.props.data !== null) {
             const list = this.props.data.StandingsLists[0].ConstructorStandings.map(elem =>
-            <tr className="data" key={elem.position}>
+            <tr data-name={elem.Constructor.constructorId} onClick={this.props.actionShowDetails} className="data" key={elem.position}>
                 <td className="position">{elem.position}</td>
                 <td className="constructor">{elem.Constructor.name}</td>
                 <td className="nationality">{elem.Constructor.nationality}</td>

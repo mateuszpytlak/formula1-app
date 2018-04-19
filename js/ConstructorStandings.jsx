@@ -10,7 +10,7 @@ export class ConstructorStandings extends React.Component {
                 <legend>Driver standings</legend>
                 <table>
                     <TableHeadConstructors data={this.props.data}/>
-                    <TableBodyConstructors data={this.props.data}/>
+                    <TableBodyConstructors actionShowDetails={this.props.actionShowDetails} data={this.props.data}/>
                 </table>
             </fieldset>
         )

@@ -24,4 +24,21 @@ td.finished {
     text-align: center;
 }
 
+fieldset.driverDetails {
+    border: 3px solid #FF6C41;
+    color: #FF6C41;
+}
 
+.driverDetails thead {
+    background: #FF6C41;
+}
+
+.driverDetails th,
+.driverDetails td {
+    border-bottom: 1px solid #ad482c;
+}
+
+.driverDetails tr.data:hover {
+    background-color: #FF6C41;
+    color: #fff;
+}

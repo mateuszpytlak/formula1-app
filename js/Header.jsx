@@ -10,6 +10,7 @@ export class Header extends React.Component {
                 <div className="page_wrap">
                     <Logo/>
                     {/*<Navigation/>*/}
+
                 </div>
             </div>
         )

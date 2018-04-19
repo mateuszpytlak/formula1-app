@@ -26,6 +26,7 @@ export class Standings extends React.Component {
             year: 2017,
             standings: 'driverStandings',
             driverDetails: null,
+            constructorDetails: null,
         }
     }
 
@@ -69,15 +70,29 @@ export class Standings extends React.Component {
             .catch(err => console.log(err));
     };
 
-    handleShowDetails = (event) => {
+    handleDriverShowDetails = (event) => {
         const driverDetails = event.target.parentNode.dataset.name;
         const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/drivers/${driverDetails}/results.json`;
 
         fetch(fetchUrl)
             .then(resp => resp.json())
-            .then(data => this.setState({driverDetails: data.MRData.RaceTable}))
+            .then(data => {
+                this.setState({driverDetails: data.MRData.RaceTable});
+
+                this.fieldset.scrollIntoView()  //TODO: scrollowanie na fieldset
+            })
             .catch(err => console.log(err));
     };
+
+    // handleDriverShowDetails = (event) => {
+    //     const driverDetails = event.target.parentNode.dataset.name;
+    //     const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/drivers/${driverDetails}/results.json`;
+    //
+    //     fetch(fetchUrl)
+    //         .then(resp => resp.json())
+    //         .then(data => this.setState({driverDetails: data.MRData.RaceTable}))
+    //         .catch(err => console.log(err));
+    // };
 
 
     render() {
@@ -92,18 +107,11 @@ export class Standings extends React.Component {
                                 {optionList}
                             </select>
                         </div>
-                        {/*<HashRouter>*/}
-                        {/*<div>*/}
                         <Buttons action={this.handleStandings} standings={this.state.standings}/>
-                        {/*<Switch>*/}
-                        {/*<Route path="/driverStandings" component={DriverStandings} data={this.state.data}/>*/}
-                        {/*<Route path="/constructorStandings" component={ConstructorStandings}*/}
-                        {/*data={this.state.data}/>*/}
-                        <DriverStandings actionShowDetails={this.handleShowDetails} data={this.state.data}/>
-                        {/*</Switch>*/}
-                        {/*</div>*/}
-                        {/*</HashRouter>*/}
-                        {this.state.driverDetails && <DriverDetails driverDetails={this.state.driverDetails}/>}
+                        <DriverStandings actionShowDetails={this.handleDriverShowDetails} data={this.state.data}/>
+                        {this.state.driverDetails &&
+                        <DriverDetails fieldsetRef={el => this.fieldset = el}
+                                       driverDetails={this.state.driverDetails}/>}
                     </div>
                 )
             } else if (this.state.standings === 'constructorStandings') {
@@ -114,18 +122,9 @@ export class Standings extends React.Component {
                                 {optionList}
                             </select>
                         </div>
-                        {/*<HashRouter>*/}
-                        {/*<div>*/}
                         <Buttons action={this.handleStandings} standings={this.state.standings}/>
-                        {/*<Switch>*/}
-                        {/*<Route path="/driverStandings" component={DriverStandings} data={this.state.data}/>*/}
-                        {/*<Route path="/constructorStandings" component={ConstructorStandings}*/}
-                        {/*data={this.state.data}/>*/}
                         <ConstructorStandings data={this.state.data}/>
-                        {/*</Switch>*/}
-                        {/*</div>*/}
-                        {/*</HashRouter>*/}
-                        {this.state.driverDetails && <div>{this.state.driverDetails}</div>}
+                        {this.state.constructorDetails && <ConstructorDetails constructorDetails={this.state.constructorDetails}/>}
                     </div>
                 )
             }
