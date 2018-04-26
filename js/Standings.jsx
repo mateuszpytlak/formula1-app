@@ -4,6 +4,8 @@ import {DriverStandings} from "./DriverStandings.jsx";
 import {ConstructorStandings} from "./ConstructorStandings.jsx";
 import {DriverDetails} from "./DriverDetails.jsx";
 
+
+//--------------COPIED
 const selectOptions = [];
 
 for (let i = 2018; i > 1949; i--) {
@@ -65,10 +67,14 @@ export class Standings extends React.Component {
             .then(data => {
                 this.setState({driverDetails: data.MRData.RaceTable});
 
-                this.fieldset.scrollIntoView()  //TODO: scrollowanie na fieldset
+                this.fieldset.scrollIntoView({behavior: "smooth"});  //TODO: scrollowanie na fieldset
+                console.log('fieldset:', this.fieldset)
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
     };
+
+
+    //--------------/COPIED
 
     render() {
         const optionList = selectOptions.map(el => <option key={el}>{el}</option>);
@@ -78,7 +84,7 @@ export class Standings extends React.Component {
                 return (
                     <div className="page_wrap">
                         <div className="styled-select blue">
-                            <select id="select" value={this.state.year} onChange={this.handleInputYear}>
+                            <select ref={this.props.selectRef} id="select" value={this.state.year} onChange={this.handleInputYear}>
                                 {optionList}
                             </select>
                         </div>

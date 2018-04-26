@@ -9,7 +9,7 @@ export class Header extends React.Component {
             <div className="header">
                 <div className="page_wrap">
                     <Logo/>
-                    <EnterButton />
+                    <EnterButton action={this.props.action}/>
                 </div>
             </div>
         )
