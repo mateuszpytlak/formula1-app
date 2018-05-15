@@ -9,6 +9,8 @@ export class Buttons extends React.Component {
                 {/*<NavLink to="/constructorStandings" onClick={this.props.action} data-value="constructorStandings">Constructors</NavLink>*/}
                 <div onClick={this.props.action} data-value="driverStandings">Driver</div>
                 <div onClick={this.props.action} data-value="constructorStandings">Constructor</div>
+                {/* <div onClick={this.props.action} data-value="driverStandings">Driver</div>
+                <div onClick={this.props.action} data-value="constructorStandings">Constructor</div> */}
             </div>
         )
     }
