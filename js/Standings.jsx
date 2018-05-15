@@ -52,9 +52,16 @@ export class Standings extends React.Component {
         const standingsValue = event.target.dataset.value;
         const fetchUrl = `http://ergast.com/api/f1/${this.state.year}/${standingsValue}.json`;
 
+        const buttons = document.querySelector('div.buttons');
+
         fetch(fetchUrl)
             .then(resp => resp.json())
-            .then(data => this.setState({data: data.MRData.StandingsTable, standings: standingsValue}))
+            .then(data => {
+                this.setState({data: data.MRData.StandingsTable, standings: standingsValue});
+                console.log('i just scrolled');
+                buttons.scrollIntoView();
+                console.log(buttons);
+            })
             .catch(err => console.log(err));
     };
 
@@ -66,15 +73,10 @@ export class Standings extends React.Component {
             .then(resp => resp.json())
             .then(data => {
                 this.setState({driverDetails: data.MRData.RaceTable});
-
-                this.fieldset.scrollIntoView({behavior: "smooth"});  //TODO: scrollowanie na fieldset
-                console.log('fieldset:', this.fieldset)
+                this.fieldset.scrollIntoView({behavior: "smooth", block: "start"});  //TODO: scrollowanie na fieldset
             })
             .catch(err => console.log(err))
     };
-
-
-    //--------------/COPIED
 
     render() {
         const optionList = selectOptions.map(el => <option key={el}>{el}</option>);
@@ -84,7 +86,7 @@ export class Standings extends React.Component {
                 return (
                     <div className="page_wrap">
                         <div className="styled-select blue">
-                            <select ref={this.props.selectRef} id="select" value={this.state.year} onChange={this.handleInputYear}>
+                            <select ref={this.props.selectRef} value={this.state.year} onChange={this.handleInputYear}>
                                 {optionList}
                             </select>
                         </div>
@@ -99,7 +101,7 @@ export class Standings extends React.Component {
                 return (
                     <div className="page_wrap">
                         <div className="styled-select blue">
-                            <select value={this.state.year} onChange={this.handleInputYear}>
+                            <select ref={this.props.selectRef} value={this.state.year} onChange={this.handleInputYear}>
                                 {optionList}
                             </select>
                         </div>

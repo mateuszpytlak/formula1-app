@@ -10,16 +10,7 @@ for (let i = 2018; i > 1949; i--) {
 
 export class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            temporary: null,
-        }
-    }
-
     handleEnterButton = () => {
-        console.log('enter dziala');
-        // console.log(this.select);
         this.select.scrollIntoView({behavior: "smooth", block: "start"});
     };
 
