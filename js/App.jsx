@@ -8,6 +8,10 @@ for (let i = 2018; i > 1949; i--) {
     selectOptions.push(i);
 }
 
+// for (let i = 2018; i > 1949; i--) {
+//     selectOptions.push(i);
+// }
+
 export class App extends React.Component {
 
     handleEnterButton = () => {
