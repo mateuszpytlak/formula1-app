@@ -19,7 +19,7 @@ export class Timer extends React.Component {
                 });
                 
                 //pobranie aktualnej daty
-                const today = new Date(2018, 10, 10, 17, 10);
+                const today = new Date()
                 console.log(`Data teraz: ${today}`);
 
                 //pobranie daty wyscigu
@@ -33,22 +33,22 @@ export class Timer extends React.Component {
                 const oneSecond = 1000;
     
                 //pozostałe dni
-                const remainingDays = Math.floor((raceDate.getTime() - today.getTime()) / oneDay) ;
+                const remainingDays = Math.floor((raceDate.getTime() - today.getTime()) / oneDay );
                 console.log(`Ramaining Days: ${remainingDays}`);
                 this.setState({remainingDays: remainingDays,});
 
                 //pozostałe godziny
-                const remainingHours = Math.floor((raceDate.getTime() - today.getTime()) / oneHour);
+                const remainingHours = Math.floor(((raceDate.getTime() - today.getTime()) / oneHour) - remainingDays * 24) ;
                 console.log(`Remaining hours: ${remainingHours}`);
                 this.setState({remainingHours: remainingHours,});
 
                 //pozostałe minuty
-                const remainingMinutes = Math.floor((raceDate.getTime() - today.getTime()) / oneMinute);
+                const remainingMinutes = Math.floor(((raceDate.getTime() - today.getTime()) / oneMinute) - remainingDays * 24 * 60 - remainingHours * 60) ;
                 console.log(`Remaining minutes: ${remainingMinutes}`);
                 this.setState({remainingMinutes: remainingMinutes,});
 
                 //pozostałe sekundy
-                const remainingSeconds = Math.floor((raceDate.getTime() - today.getTime()) / oneSecond);
+                const remainingSeconds = Math.floor(((raceDate.getTime() - today.getTime()) / oneSecond) - remainingDays * 24 * 60 * 60 - remainingHours * 60 * 60 - remainingMinutes * 60) ;
                 console.log(`Remaining seconds: ${remainingSeconds}`);
                 this.setState({remainingSeconds: remainingSeconds,});
 
@@ -62,6 +62,9 @@ export class Timer extends React.Component {
         return (
             <div className="timer">
                 <div>Days to next race: {this.state.remainingDays}</div>
+                <div>Hours to next race: {this.state.remainingHours}</div>
+                <div>Minutes to next race: {this.state.remainingMinutes}</div>
+                <div>Seconds to next race: {this.state.remainingSeconds}</div>
             </div>
         )
     }
