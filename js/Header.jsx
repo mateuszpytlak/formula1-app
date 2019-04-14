@@ -12,7 +12,7 @@ export class Header extends React.Component {
             <div className="header">
                 <div className="page_wrap">
                     <Logo />
-                    <Timer />
+                    {/* <Timer /> */}
                     <EnterButton action={this.props.action} />
                 </div>
 
